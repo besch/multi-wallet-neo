@@ -4,11 +4,16 @@
   "private": true,
   "dependencies": {
     "@cityofzion/neon-js": "3.8.0",
+    "@types/prop-types": "15.5.3",
+    "@types/react-dnd": "2.0.36",
     "@types/reactstrap": "5.0.26",
     "mobx": "4",
     "mobx-react": "5.1.2",
     "mobx-state-tree": "2.0.5",
+    "prop-types": "15.6.1",
     "react": "^16.4.0",
+    "react-dnd": "3.0.2",
+    "react-dnd-html5-backend": "4.0.1",
     "react-dom": "^16.4.0",
     "react-scripts-ts": "2.16.0",
     "reactstrap": "6.0.1"

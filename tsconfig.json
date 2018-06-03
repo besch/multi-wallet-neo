@@ -12,7 +12,8 @@
     "rootDir": "src",
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
-    "strict": false
+    "strict": false,
+    "experimentalDecorators": true
   },
   "exclude": [
     "node_modules",
