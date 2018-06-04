@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { DragSource } from 'react-dnd';
+import { DragSource, ConnectDragSource } from 'react-dnd';
 import { TYPES } from './helpers/constants';
 
 interface props {
@@ -15,7 +15,8 @@ const cardSource = {
     beginDrag(props) {
         console.log('props', props)
         return {
-            text: props.text
+            text: props.text,
+            cardId: 1
         };
     }
 };
@@ -30,9 +31,20 @@ const collect = (connect, monitor) => {
     };
 }
 
-class Draggable extends Component {
+interface IDraggableProps {
+    connectDragSource: ConnectDragSource,
+    isDragging: boolean
+    transfer: {
+        color: string,
+        initialTokens: number
+        text: string
+    }
+}
+
+class Draggable extends Component<IDraggableProps, {}>{
     render() {
-        const { isDragging, connectDragSource, text } = this.props as any;
+        const { isDragging, connectDragSource } = this.props;
+        const { text, color, initialTokens } = this.props.transfer;
         return connectDragSource(
             <div style={{ 
                 opacity: isDragging ? 0.5 : 1, 
@@ -42,7 +54,9 @@ class Draggable extends Component {
                 display: 'inline-block',
                 border: '1px solid black'
             }}>
-                {text}
+                <p>Text: {text}</p>
+                <p>Color: {color}</p>
+                <p>InitialTokens: {initialTokens}</p>
             </div>
         );
     }

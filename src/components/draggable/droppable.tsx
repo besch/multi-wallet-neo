@@ -10,17 +10,21 @@ import { Transfer } from './helpers/transfer';
 //     isDragging: boolean;
 // }
 
-interface TransferProps {
+interface DroppableAreaProps {
     transfer: Transfer,
-    // connectDropTarget?(): any;
+    connectDropTarget: ConnectDropTarget
+    bg: string
 }
 
 const dropTarget: DropTargetSpec<any> = {
-    canDrop(props) {
-        return props.transfer.canTransferTokens(props);
-    },
+    // canDrop(props) {
+    //     // props.transfer.color === props.color;
+    //     console.log('props----canDrop', props.color === 'blue', props)
+    //     return props.color === 'blue';
+    // },
     drop(props) {
-        props.transfer.transferTokens(props);
+        console.log('drop ----- text', props.text)
+        // props.transfer.transferTokens(props);
     }
 };
 
@@ -35,12 +39,12 @@ const collect = (connect, monitor) => {
 
 class DroppableArea extends Component<any, any> {
     render() {
-        const { connectDropTarget } = this.props as any;
+        const { connectDropTarget, bg } = this.props as any;
         return connectDropTarget(
             <div style={{
                 width: 200,
                 height: 600,
-                backgroundColor: 'lightblue',
+                backgroundColor: bg,
                 margin: '20px',
                 padding: '20px',
                 border: '1px dashed black',

@@ -6,6 +6,7 @@ import { CreateWalletForm } from './components/create-wallet-form';
 import DragDropContextArea from './components/draggable/area';
 
 import { WalletListModel } from './models/walletList';
+import { Transfer } from './components/draggable/helpers/transfer';
 
 class App extends React.Component {
   public render() {
@@ -21,7 +22,7 @@ class App extends React.Component {
         <WalletList walletList={list.wallets} />
         <CreateWalletForm walletStore={list}/>
 
-        <DragDropContextArea />
+        <DragDropContextArea transfer={new Transfer()}/>
       </div>
     );
   }
