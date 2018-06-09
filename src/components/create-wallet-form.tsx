@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react';
-// import { Button, Input, Table } from 'reactstrap';
+import { Button, Input, Table } from 'reactstrap';
 import { Wallet } from '../models/wallet';
 import { WalletService } from '../services/wallet';
 
