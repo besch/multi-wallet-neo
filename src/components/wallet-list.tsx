@@ -51,6 +51,11 @@ class WalletList extends Component<any, any> {
             <p>Public key: {wallet.publicKey}</p>
             <p>Wif: {wallet.wif}</p>
             <p>ScriptHash: {wallet.scriptHash}</p>
+            {/* <div>Balance: {
+              wallet.balance.map((amount, name) => (
+                <p>{name}: {amount}</p>
+              ))
+            }</div> */}
           </div>
         ))}
       </div>

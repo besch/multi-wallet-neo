@@ -1,4 +1,5 @@
 import Neon from '@cityofzion/neon-js';
+import { generateRandomBalanceData, Balance } from "./generateRandomWalletData";
 // import { observer, PropTypes } from 'mobx-react';
 
 // import Neon, { wallet, tx } from '@cityofzion/neon-js';
@@ -10,7 +11,8 @@ interface Wallet {
     privateKey: string,
     publicKey: string,
     wif: string,
-    scriptHash: string
+    scriptHash: string,
+    balance?: Balance
 }
 
 export class WalletService {
@@ -25,7 +27,8 @@ export class WalletService {
             privateKey: _privateKey,
             publicKey: _publicKey,
             wif: WIF,
-            scriptHash: _scriptHash
+            scriptHash: _scriptHash,
+            balance: generateRandomBalanceData()
         }
 
         return walletData;

@@ -7,6 +7,8 @@ export const WalletListModel = types
     })
     .actions(self => ({
         add(wallet: any) {
+            console.log('wallet', wallet);
+            
             self.wallets.push(wallet);
         },
         remove(wallet: any) {
