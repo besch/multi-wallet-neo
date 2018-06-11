@@ -51,15 +51,32 @@ class WalletList extends Component<any, any> {
             <p>Public key: {wallet.publicKey}</p>
             <p>Wif: {wallet.wif}</p>
             <p>ScriptHash: {wallet.scriptHash}</p>
-            {/* <div>Balance: {
-              wallet.balance.map((amount, name) => (
-                <p>{name}: {amount}</p>
-              ))
-            }</div> */}
+            <Balance balance={wallet.balance} />
           </div>
         ))}
       </div>
     )
+  }
+}
+
+class Balance extends Component<any, any> {
+  render() {
+    const balance = this.props.balance;
+    let array = [];
+
+    for (let key in balance) {
+      if (balance.hasOwnProperty(key)) {
+        array.push(`${key}: ${balance[key]}`)
+      }
+    }
+
+    return <div>
+        {array.map((item, i) => 
+          <p key={i}>
+            {item}
+          </p>
+        )}
+      </div>;
   }
 }
 

@@ -9,6 +9,7 @@
     "@types/reactstrap": "5.0.26",
     "css-loader": "0.28.11",
     "faker": "4.1.0",
+    "firebase": "5.0.4",
     "mobx": "4",
     "mobx-react": "5.1.2",
     "mobx-react-devtools": "5.0.1",

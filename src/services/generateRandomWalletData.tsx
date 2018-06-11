@@ -7,7 +7,7 @@ export interface Balance {
     NEO?: number;
     GAS?: number;
     DBC?: number;
-    QLC: number;
+    QLC?: number;
     TNC?: number;
     RPX?: number;
     ZPT?: number;
@@ -20,9 +20,10 @@ export interface Balance {
 const tokenSymbols: Array<Token> = ["NEO", "GAS", "DBC", "QLC", "TNC", "RPX", "ZPT", "TKY", "ACAT", "ONT", "IAM", "NRV"];
 
 export const generateRandomBalanceData = () => {
-    console.log(faker.random.number());
     
-    let result: Balance;
-    tokenSymbols.map(symbol => Object.assign({}, result, { symbol:  faker.random.number() }))
+    let result: Balance = {};
+    // tokenSymbols.map(symbol => Object.assign({}, result, { symbol:  faker.random.number() }))
+    tokenSymbols.map(symbol => result[symbol] = faker.random.number());
+    console.log('result', result);
     return result;
 }
