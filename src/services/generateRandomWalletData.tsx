@@ -22,8 +22,6 @@ const tokenSymbols: Array<Token> = ["NEO", "GAS", "DBC", "QLC", "TNC", "RPX", "Z
 export const generateRandomBalanceData = () => {
     
     let result: Balance = {};
-    // tokenSymbols.map(symbol => Object.assign({}, result, { symbol:  faker.random.number() }))
     tokenSymbols.map(symbol => result[symbol] = faker.random.number());
-    console.log('result', result);
     return result;
 }
