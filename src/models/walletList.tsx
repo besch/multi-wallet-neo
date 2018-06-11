@@ -8,16 +8,25 @@ export const WalletListModel = types
     })
     .actions(self => ({
         add(wallet: any) {
-            console.log('wallet', wallet);
+            // console.log('wallet', wallet);
             
             self.wallets.push(wallet);
-            console.log("snapshot", self.wallets);
-            setData(self.wallets)
-                .then(res => console.log('res', res))
-                .catch(err => console.error('err', err));
+            
+            // console.log("getSnapshot", getSnapshot(self.wallets));
+            // console.log("getSnapshot", getSnapshot(JSON.stringify(self.wallets)));
+            const snapshot = getSnapshot(self.wallets);
+            console.log('this.snapshot()', this.snapshot());
+            console.log("this.snapshot()", snapshot);
+            
+            setData(this.snapshot())
+              .then(res => console.log("res", res))
+              .catch(err => console.error("err", err));
         },
         remove(wallet: any) {
             self.wallets.splice(self.wallets.indexOf(wallet), 1);
-            setData(self.wallets);
+            setData(this.snapshot());
+        },
+        snapshot() {
+            return getSnapshot(self.wallets);
         }
     }))
