@@ -1,13 +1,23 @@
-.draggableWalletList {
+.wallet-list {
     display: flex;
     width: 100%;
 }
 
-.draggableWallet {
+.wallet {
     width: 300px;
     border: 1px solid grey;
     border-radius: 5px;
     margin: 20px;
     padding: 10px;
     word-break: break-word;
+}
+
+.deleteWallet {
+    color: red;
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid red;
+    width: 20px;
+    height: 15px;
+    float: right;
 }

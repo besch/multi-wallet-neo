@@ -11,25 +11,18 @@ export const WalletListModel = types
             self.wallets.push(wallet);
             const snapshot = getSnapshot(self.wallets);
             setData(snapshot)
-              .then(res => console.log("res", res))
-              .catch(err => console.error("err", err));
+                .then(res => console.log("res", res))
+                .catch(err => console.error("err", err));
         },
+        
         remove(wallet: any) {
-            const snapshot = getSnapshot(self.wallets);
             self.wallets.splice(self.wallets.indexOf(wallet), 1);
+            const snapshot = getSnapshot(self.wallets);
             setData(snapshot);
-        },
-
-        set(wallets) {
-            this.wallets = wallets;
         },
 
         removeAll() {
             console.log('removeAll');
             self.wallets = null;
         },
-
-        snapshot() {
-            return getSnapshot(self.wallets);
-        }
-    }))
+    }));
