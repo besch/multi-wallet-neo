@@ -4,6 +4,10 @@
     "private": true,
     "dependencies": {
         "@cityofzion/neon-js": "3.8.0",
+        "@fortawesome/fontawesome": "1.1.8",
+        "@fortawesome/fontawesome-free-regular": "5.0.13",
+        "@fortawesome/fontawesome-free-solid": "5.0.13",
+        "@fortawesome/react-fontawesome": "0.0.20",
         "@types/prop-types": "15.5.3",
         "@types/react-dnd": "2.0.36",
         "@types/reactstrap": "5.0.26",
@@ -33,7 +37,7 @@
     "scripts": {
         "build-css": "node-sass-chokidar src/ -o src/",
         "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-        "start-js": "react-scripts start",
+        "start-js": "react-scripts-ts start",
         "start": "npm-run-all -p watch-css start-js",
         "start-win": "cross-env PORT=3006 npm-run-all -p watch-css start-js",
         "build-js": "react-scripts-ts build",
