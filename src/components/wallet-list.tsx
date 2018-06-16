@@ -6,7 +6,9 @@ import { observer } from 'mobx-react';
 import { onSnapshot } from 'mobx-state-tree';
 import { Collapse, Card, CardBody, CardHeader, CardFooter } from "reactstrap";
 import FontAwesomeIcon from "@fortawesome/react-fontawesome";
-import { faCheckSquare, faCoffee, faMinus, faTimes } from "@fortawesome/fontawesome-free-solid";
+import { faPlus, faMinus, faTimes } from "@fortawesome/fontawesome-free-solid";
+
+import { TransferTokenForm } from './transfer-token-form';
 
 @observer
 export default class WalletList extends Component<any, any> {
@@ -31,35 +33,39 @@ export default class WalletList extends Component<any, any> {
 
 	render() {
 		return <div className="wallet-list">
-        {this.props.walletStore.wallets.map((wallet: any, i: any) => (
-			<Card className="wallet" key={i}>
-				<CardHeader>
-					<FontAwesomeIcon
-						className="wallet-control"
-						icon={faMinus}
-						onClick={() => this.props.walletStore.remove(i)}
-					/>
-					<FontAwesomeIcon
-						className="wallet-control"
-						icon={faTimes}
-						onClick={() => this.props.walletStore.remove(i)}
-					/>
-					<div>Name: {wallet.name}</div>
-				</CardHeader>
+			{this.props.walletStore.wallets.map((wallet: any, i: any) => (
+				<Card className="wallet" key={i}>
+					<CardHeader>
+						<span>Name: {wallet.name}</span>
+						<FontAwesomeIcon
+							className="wallet-control pull-right"
+							icon={faTimes}
+							onClick={() => this.props.walletStore.remove(i)}
+						/>
+						<FontAwesomeIcon
+							className="wallet-control pull-right"
+							icon={this.state[`collapse-${i}`] ? faMinus : faPlus}
+							onClick={() => this.toggleCollapse(i)}
+						/>
+					</CardHeader>
 
-				<Collapse isOpen={this.state[`collapse-${i}`]}>
-					<CardBody>
-						<p>Address: {wallet.address}</p>
-						<p>Private key: {wallet.privateKey}</p>
-						<p>Public key: {wallet.publicKey}</p>
-						<p>Wif: {wallet.wif}</p>
-						<p>ScriptHash: {wallet.scriptHash}</p>
-						<Balance balance={wallet.balance} />
-					</CardBody>
-				</Collapse>
-			</Card>
-        ))}
-      </div>;
+					<Collapse isOpen={this.state[`collapse-${i}`]}>
+						<CardBody>
+							<p>Address: {wallet.address}</p>
+							<p>Private key: {wallet.privateKey}</p>
+							<p>Public key: {wallet.publicKey}</p>
+							<p>Wif: {wallet.wif}</p>
+							<p>ScriptHash: {wallet.scriptHash}</p>
+							<Balance balance={wallet.balance} />
+						</CardBody>
+					</Collapse>
+
+					<CardFooter>
+						<TransferTokenForm wallets={this.props.walletStore.wallets} currentWalletIndex={i}/>
+					</CardFooter>
+				</Card>
+			))}
+		</div>;
 	}
 }
 
