@@ -26,8 +26,12 @@ export const Wallet = types
         balance: Token
     })
     .actions(self => ({
-        transferToken(fromAddress: string, toAddress: string, tokenName: string, amount: number) {
-            
+        add(token, amount) {
+            self.balance[token] += amount;
+        },
+
+        substract(token, amount) {
+            self.balance[token] -= amount;
         },
 
         canTransfer() {

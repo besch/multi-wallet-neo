@@ -69,6 +69,7 @@ export default class WalletList extends Component<any, any> {
 	}
 }
 
+@observer
 class Balance extends Component<any, any> {
 	render() {
 		const balance = this.props.balance;

@@ -21,8 +21,8 @@ export const WalletListModel = types
             setData(snapshot);
         },
 
-        removeAll() {
-            console.log('removeAll');
-            self.wallets = null;
-        },
+        // removeAll() {
+        //     console.log('removeAll');
+        //     self.wallets = null;
+        // },
     }));

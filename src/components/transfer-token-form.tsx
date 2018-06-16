@@ -7,7 +7,6 @@ import Select from 'react-select';
 import { observer } from "mobx-react";
 import { WalletListModel } from "../models/walletList";
 import 'react-select/dist/react-select.css';
-// import {  } from "reactstrap";
 
 @observer
 export class TransferTokenForm extends Component<any, any> {
@@ -18,14 +17,16 @@ export class TransferTokenForm extends Component<any, any> {
         selectedTokens: null,
     };
 
-    transferToken(fromAddress, toAddress, token, amount) {
-        // e.preventDefault();
+    transferToken(e) {
+        e.preventDefault();
 
-        // this.props.walletStore.add(
-        // Wallet.create(newWallet)
-        // );
+        const walletFrom = this.props.wallets[this.props.currentWalletIndex];
+        const walletTo = this.props.wallets[this.state.selectedWallets[0].index];
+        const tokenToSend = this.state.selectedTokens[0].value;
+        const amount = parseInt(this.amountToSend.value);
 
-        // this.walletName.value = '';
+        walletFrom.substract(tokenToSend, amount);
+        walletTo.add(tokenToSend, amount);
     }
 
     handleChangeWallets = selectedWallets => {
@@ -39,11 +40,10 @@ export class TransferTokenForm extends Component<any, any> {
     }
 
     render() {
-        // console.log('this.props', this.props);
-
         const walletList = this.props.wallets.map((wallet, i) => this.props.currentWalletIndex !== i && {
             label: wallet.name,
-            value: wallet.address
+            value: wallet.address,
+            index: i
         }).filter(i => i);
 
         let availableTokensToTransfer = [];
@@ -56,7 +56,7 @@ export class TransferTokenForm extends Component<any, any> {
         }
         
         return (
-            <form onSubmit={() => this.transferToken}>
+            <form onSubmit={(e) => this.transferToken(e)}>
                 <Select
                     placeholder="Wallet name"
                     clearable={true}
