@@ -21,12 +21,18 @@ export class TransferTokenForm extends Component<any, any> {
         e.preventDefault();
 
         const walletFrom = this.props.wallets[this.props.currentWalletIndex];
-        const walletTo = this.props.wallets[this.state.selectedWallets[0].index];
-        const tokenToSend = this.state.selectedTokens[0].value;
         const amount = parseInt(this.amountToSend.value);
 
-        walletFrom.substract(tokenToSend, amount);
-        walletTo.add(tokenToSend, amount);
+        this.state.selectedWallets.forEach(selectedWallet => {
+            const walletTo = this.props.wallets[selectedWallet.index];
+
+            this.state.selectedTokens.forEach(selectedToken => {
+                const tokenToSend = selectedToken.value;
+
+                walletFrom.substract(tokenToSend, amount);
+                walletTo.add(tokenToSend, amount);
+            })
+        });
     }
 
     handleChangeWallets = selectedWallets => {
