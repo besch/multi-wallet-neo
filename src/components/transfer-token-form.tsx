@@ -10,7 +10,7 @@ import 'react-select/dist/react-select.css';
 
 @observer
 export class TransferTokenForm extends Component<any, any> {
-    amountToSend: HTMLInputElement;
+    amountToSend;
     walletStore = WalletListModel.instantiate;
     state = {
         selectedWallets: null,
@@ -81,7 +81,8 @@ export class TransferTokenForm extends Component<any, any> {
                     options={availableTokensToTransfer}
                 />
                 <input type="text" ref={input => (this.amountToSend = input!)} placeholder="Amount to send" />
-                <button type="submit" color="info">Send tokens</button>
+                {/* <Input type="text" ref={input => this.amountToSend = input} placeholder="Amount to send" /> */}
+                <Button type="submit" color="info">Send tokens</Button>
             </form >
         )
     }

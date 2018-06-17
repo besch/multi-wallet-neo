@@ -49,16 +49,16 @@ export default class WalletList extends Component<any, any> {
 						/>
 					</CardHeader>
 
-					<Collapse isOpen={this.state[`collapse-${i}`]}>
-						<CardBody>
+					<CardBody>
+						<Collapse isOpen={this.state[`collapse-${i}`]}>
 							<p>Address: {wallet.address}</p>
 							<p>Private key: {wallet.privateKey}</p>
 							<p>Public key: {wallet.publicKey}</p>
 							<p>Wif: {wallet.wif}</p>
 							<p>ScriptHash: {wallet.scriptHash}</p>
-							<Balance balance={wallet.balance} />
-						</CardBody>
-					</Collapse>
+						</Collapse>
+						<Balance balance={wallet.balance} />
+					</CardBody>
 
 					<CardFooter>
 						<TransferTokenForm wallets={this.props.walletStore.wallets} currentWalletIndex={i}/>
