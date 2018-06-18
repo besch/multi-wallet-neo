@@ -33,17 +33,19 @@ export default class WalletList extends Component<any, any> {
 
 	render() {
 		return <div className="wallet-list">
-			{this.props.walletStore.wallets.map((wallet: any, i: any) => (
+			{this.props.walletStore.wallets.map((wallet, i) => (
 				<Card className="wallet" key={i}>
 					<CardHeader>
-						<span>Name: {wallet.name}</span>
+						<h4 className="wallet-name">{wallet.name}</h4>
 						<FontAwesomeIcon
-							className="wallet-control pull-right"
+							style={{color: 'red'}}
+							className="wallet-control-icon pull-right"
 							icon={faTimes}
 							onClick={() => this.props.walletStore.remove(i)}
 						/>
 						<FontAwesomeIcon
-							className="wallet-control pull-right"
+							style={{ color: 'green' }}
+							className="wallet-control-icon pull-right"
 							icon={this.state[`collapse-${i}`] ? faMinus : faPlus}
 							onClick={() => this.toggleCollapse(i)}
 						/>

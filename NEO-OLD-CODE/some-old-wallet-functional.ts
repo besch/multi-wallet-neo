@@ -74,21 +74,21 @@
 
 
 
-    const privateKey = Neon.create.privateKey()
-    const wif = Neon.get.WIFFromPrivateKey(privateKey)
+    // const privateKey = Neon.create.privateKey()
+    // const wif = Neon.get.WIFFromPrivateKey(privateKey)
 
-    const encrypted = Neon.encrypt.privateKey(privateKey, 'myPassword')
-    const decrypted = Neon.decrypt.privateKey(encrypted, 'myPassword')
+    // const encrypted = Neon.encrypt.privateKey(privateKey, 'myPassword')
+    // const decrypted = Neon.decrypt.privateKey(encrypted, 'myPassword')
 
-    console.log('privateKey', privateKey);
-    console.log('wif', wif);
-    console.log('encrypted', encrypted);
-    console.log('decrypted', decrypted);
+    // console.log('privateKey', privateKey);
+    // console.log('wif', wif);
+    // console.log('encrypted', encrypted);
+    // console.log('decrypted', decrypted);
     
 
-    Neon.is.wif(wif) // true
-    Neon.is.publicKey('randomphrase') // false
+    // Neon.is.wif(wif) // true
+    // Neon.is.publicKey('randomphrase') // false
 
-    const account = Neon.create.account(privateKey)
-    console.log('account', account)
-    console.log('------------------------')
+    // const account = Neon.create.account(privateKey)
+    // console.log('account', account)
+    // console.log('------------------------')

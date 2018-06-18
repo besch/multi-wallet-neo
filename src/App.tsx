@@ -32,7 +32,7 @@ class App extends React.Component {
 				<WalletList walletStore={walletStore} />
 				<CreateWalletForm walletStore={walletStore} />
 
-				<DragDropContextArea transfer={new Transfer()} />
+				{/* <DragDropContextArea transfer={new Transfer()} /> */}
 
 				<DevTools />
 			</div>

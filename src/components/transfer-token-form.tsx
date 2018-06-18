@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react';
-import { Button, Input, Table } from 'reactstrap';
-import { Wallet } from '../models/wallet';
-import { WalletService } from '../services/wallet';
+import { Button, Input, Form, FormGroup } from "reactstrap";
 import Select from 'react-select';
 import { observer } from "mobx-react";
 import { WalletListModel } from "../models/walletList";
@@ -62,28 +60,34 @@ export class TransferTokenForm extends Component<any, any> {
         }
         
         return (
-            <form onSubmit={(e) => this.transferToken(e)}>
-                <Select
-                    placeholder="Wallet name"
-                    clearable={true}
-                    multi={true}
-                    name="form-field-name"
-                    value={this.state.selectedWallets}
-                    onChange={this.handleChangeWallets}
-                    options={walletList}
-                />
-                <Select
-                    name="form-field-name"
-                    clearable={true}
-                    multi={true}
-                    value={this.state.selectedTokens}
-                    onChange={this.handleChangeTokens}
-                    options={availableTokensToTransfer}
-                />
-                <input type="text" ref={input => (this.amountToSend = input!)} placeholder="Amount to send" />
-                {/* <Input type="text" ref={input => this.amountToSend = input} placeholder="Amount to send" /> */}
-                <Button type="submit" color="info">Send tokens</Button>
-            </form >
+            <Form onSubmit={(e) => this.transferToken(e)}>
+                <FormGroup>
+                    <Select
+                        placeholder="Wallet name"
+                        clearable={true}
+                        multi={true}
+                        value={this.state.selectedWallets}
+                        onChange={this.handleChangeWallets}
+                        options={walletList}
+                    />
+                </FormGroup>
+                <FormGroup>
+                    <Select
+                        placeholder="Tokens to send"
+                        clearable={true}
+                        multi={true}
+                        value={this.state.selectedTokens}
+                        onChange={this.handleChangeTokens}
+                        options={availableTokensToTransfer}
+                    />
+                </FormGroup>
+                <FormGroup>
+                    <Input type="text" innerRef={input => this.amountToSend = input} placeholder="Amount to send" />
+                </FormGroup>
+                <FormGroup>
+                    <Button type="submit" color="info">Send tokens</Button>
+                </FormGroup>
+            </Form>
         )
     }
 }
